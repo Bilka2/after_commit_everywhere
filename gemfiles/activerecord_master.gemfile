@@ -7,7 +7,13 @@ git "https://github.com/rails/rails.git" do
   gem "activerecord"
 end
 
-gem "sqlite3"
+gem "isolator", "~> 1.1"
+gem "rake", "~> 13.0"
+gem "rspec", "~> 3.0"
 gem "rspec-rails"
+gem "rubocop", "~> 0.81.0"
+gem "sqlite3"
+gem "yard"
+gem "debug"
 
 gemspec path: "../"
