@@ -14,16 +14,11 @@ jobs:
   test:
     name: 'ActiveRecord ${{ matrix.activerecord }} on Ruby ${{ matrix.ruby }}'
     runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.optional || false }}
     strategy:
       fail-fast: false
       matrix:
         include:
-          - ruby: '2.6'
-            activerecord: '5.1'
-            gemfile: 'activerecord_5_1.gemfile'
-          - ruby: '2.6'
-            activerecord: '5.2'
-            gemfile: 'activerecord_5_2.gemfile'
           - ruby: '2.7'
             activerecord: '6.0'
             gemfile: 'activerecord_6_0.gemfile'
@@ -39,18 +34,16 @@ jobs:
           - ruby: '3.2'
             activerecord: '7.1'
             gemfile: 'activerecord_7_1.gemfile'
-          - ruby: '3.1'
-            activerecord: '7.2'
-            gemfile: 'activerecord_7_2.gemfile'
-          - ruby: '3.2'
-            activerecord: '7.2'
-            gemfile: 'activerecord_7_2.gemfile'
           - ruby: '3.3'
             activerecord: '7.2'
             gemfile: 'activerecord_7_2.gemfile'
-          - ruby: '3.3'
+          - ruby: '3.4'
+            activerecord: '8.0'
+            gemfile: 'activerecord_8_0.gemfile'
+          - ruby: 'head'
             activerecord: 'HEAD'
             gemfile: 'activerecord_master.gemfile'
+            optional: true
     env:
       CI: true
       BUNDLE_GEMFILE: gemfiles/${{ matrix.gemfile }}

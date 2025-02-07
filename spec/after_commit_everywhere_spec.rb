@@ -110,6 +110,7 @@ RSpec.describe AfterCommitEverywhere do
       end
 
       it "preserves the locale" do
+        old_enforce_available_locales = I18n.enforce_available_locales
         I18n.enforce_available_locales = false
 
         ActiveRecord::Base.transaction do
@@ -118,7 +119,7 @@ RSpec.describe AfterCommitEverywhere do
           expect(handler).not_to have_received(:call)
         end
         expect(handler).to have_received(:call).with(:de)
-
+      ensure
         I18n.enforce_available_locales = true
       end
     end
@@ -467,6 +468,7 @@ RSpec.describe AfterCommitEverywhere do
       end
 
       it "preserves the locale" do
+        old_enforce_available_locales = I18n.enforce_available_locales
         I18n.enforce_available_locales = false
 
         ActiveRecord::Base.transaction do
@@ -476,8 +478,8 @@ RSpec.describe AfterCommitEverywhere do
           raise ActiveRecord::Rollback
         end
         expect(handler).to have_received(:call).with(:de)
-
-        I18n.enforce_available_locales = true
+      ensure
+        I18n.enforce_available_locales = old_enforce_available_locales
       end
     end
 
