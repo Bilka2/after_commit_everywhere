@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## Unreleased
+
+## 1.6.0 (2025-02-07)
+
+### Added
+
+- I18n support: preserve `I18n.locale` setting from when `after_commit` is called and restore it for callback execution. [Pull request #36](https://github.com/Envek/after_commit_everywhere/pull/36) by [Bilka2][]
+
 ## 1.5.0 (2024-12-09)
 
 ### Added
@@ -156,3 +164,4 @@ See [#11](https://github.com/Envek/after_commit_everywhere/issues/11) for discus
 [@quentindemetz]: https://github.com/quentindemetz "Quentin de Metz"
 [@A1090]: https://github.com/A1090 "Tabac Andreina"
 [@kevink1103]: https://github.com/kevink1103 "Kevin (bum)"
+[Bilka2]: https://github.com/Bilka2 "Bilka"
